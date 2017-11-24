@@ -1,3 +1,2 @@
-config/config.php
-var/record.txt
 .gitignore
+pass

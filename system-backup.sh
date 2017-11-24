@@ -1,9 +1,10 @@
 #!/bin/bash
 
 date_as_string=`date +%Y-%m-%d`
+password=`cat pass`
 
+cd /
 shopt -s dotglob
-cd /tmp
 tar -cpf - \
     --exclude=proc \
     --exclude=lost+found \
@@ -20,5 +21,5 @@ tar -cpf - \
     --exclude=home/*/.cache \
     --exclude=home/*/.local/share/Trash * \
     | \
-    7za a -si -mhe=on -p@sdf1234 /tmp/backup-$date_as_string.tar.7z
+    7za a -si -mhe=on -p$password /tmp/backup-$date_as_string.tar.7z
 shopt -u dotglob
