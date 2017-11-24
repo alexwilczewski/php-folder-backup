@@ -3,8 +3,8 @@
 date_as_string=`date +%Y-%m-%d`
 
 shopt -s dotglob
-cd /
-tar -cvpzf /tmp/backup-$date_as_string.tar.gz \
+cd /tmp
+tar -cpf - \
     --exclude=proc \
     --exclude=lost+found \
     --exclude=tmp \
@@ -18,5 +18,7 @@ tar -cvpzf /tmp/backup-$date_as_string.tar.gz \
     --exclude=usr/src/linux-headers* \
     --exclude=home/*/.gvfs \
     --exclude=home/*/.cache \
-    --exclude=home/*/.local/share/Trash *
+    --exclude=home/*/.local/share/Trash * \
+    | \
+    7za a -si -mhe=on -p@sdf1234 /tmp/backup-$date_as_string.tar.7z
 shopt -u dotglob
