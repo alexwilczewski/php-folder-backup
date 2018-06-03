@@ -1,2 +1,4 @@
 .gitignore
 pass
+backup.list
+config
